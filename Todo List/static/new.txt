@@ -1,0 +1,2 @@
+To view: "sqlite viewer"
+To activate venv: "source .venv/bin/activate

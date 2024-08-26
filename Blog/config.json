@@ -1,0 +1,10 @@
+{
+    "params":{
+        "local_server":"True",
+        "local_uri":"mysql+pymysql://root:database123@localhost:3306/flask_tutorial",
+        "prod_uri":"mysql+pymysql://root:database123@localhost:3306/flask_tutorial",
+        "blog_name":"The Blog",
+        "gmail-user":"unkillable.achilles@gmail.com",
+        "gmail-password":"#achilles1007"
+    }
+}
