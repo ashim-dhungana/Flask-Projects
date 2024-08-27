@@ -9,6 +9,10 @@ local_server = True
 
 
 app = Flask(__name__)
+
+
+# MAIL
+
 # app.config.update(
 #     MAIL_SERVER =  'smtp.gmail.com',
 #     MAIL_PORT = '465',
@@ -16,6 +20,7 @@ app = Flask(__name__)
 #     MAIL_USERNAME = params['gmail-user'],
 #     MAIL_PASSWORD = params['gmail-password']
 #     )
+# mail = Mail(app)
 
 
 if (local_server):
@@ -40,6 +45,7 @@ class Contacts(db.Model):
 class Posts(db.Model):
     sno = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(30), nullable=False)
+    slug = db.Column(db.String(25), nullable=False)
     content = db.Column(db.String(500), nullable=False)
 
 
@@ -48,17 +54,12 @@ def main():
     return render_template('index.html')
 
 
-@app.route("/index.html")
-def home():
-    return render_template('index.html')
-
-
-@app.route("/about.html")
+@app.route("/about")
 def about():
     return render_template('about.html')
 
 
-@app.route("/contact.html", methods = ['GET','POST'])
+@app.route("/contact", methods = ['GET','POST'])
 def contact():
     if request.method == 'POST':
         name = request.form.get('name')
@@ -80,14 +81,15 @@ def contact():
     return render_template('contact.html')
 
 
-@app.route("/post.html")
+# @app.route("/post/<string:post_slug>", methods=['GET'])
+# def post(post_slug):
+#     post = Posts.query.filter_by(slug=post_slug).first()
+
+#     return render_template('post.html')
+
+@app.route("/post")
 def post():
     return render_template('post.html')
-
-
-@app.route("/image.html")
-def image():
-    return render_template('image.html')
 
 
 app.run(debug=True)
