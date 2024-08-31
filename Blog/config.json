@@ -6,6 +6,7 @@
         "blog_name":"The Blog",
         "gmail-user":"unkillable.achilles@gmail.com",
         "gmail-password":"#achilles1007",
-        "about_text":"Hi, this is Ashim, the king."
+        "about_text":"Hi, this is Ashim, the king.",
+        "no_of_post":5
     }
 }

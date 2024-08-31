@@ -53,7 +53,8 @@ class Posts(db.Model):
 
 @app.route("/")
 def main():
-    return render_template('index.html')
+    posts = Posts.query.filter_by().all()
+    return render_template('index.html', params=params, posts=posts)
 
 
 @app.route("/about")
