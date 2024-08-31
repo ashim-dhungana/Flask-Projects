@@ -5,6 +5,7 @@
         "prod_uri":"mysql+pymysql://root:database123@localhost:3306/flask_tutorial",
         "blog_name":"The Blog",
         "gmail-user":"unkillable.achilles@gmail.com",
-        "gmail-password":"#achilles1007"
+        "gmail-password":"#achilles1007",
+        "about_text":"Hi, this is Ashim, the king."
     }
 }

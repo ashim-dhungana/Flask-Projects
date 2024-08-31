@@ -48,6 +48,7 @@ class Posts(db.Model):
     slug = db.Column(db.String(25), nullable=False)
     content = db.Column(db.String(500), nullable=False)
     img_file = db.Column(db.String(12), nullable=False)
+    date = db.Column(db.String(20), nullable=False)
 
 
 @app.route("/")
@@ -57,7 +58,7 @@ def main():
 
 @app.route("/about")
 def about():
-    return render_template('about.html')
+    return render_template('about.html', params=params)
 
 
 @app.route("/contact", methods = ['GET','POST'])
