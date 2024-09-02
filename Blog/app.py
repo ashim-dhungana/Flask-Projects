@@ -1,7 +1,9 @@
 from flask import Flask, render_template, request, session
 from flask_sqlalchemy import SQLAlchemy
+# from werkzeug import secure_filename
 from flask_mail import Mail
 import json
+import os
 
 with open('config.json','r') as c:
     params = json.load(c)["params"]
@@ -23,6 +25,8 @@ app.secret_key = 'super-secret-key'
 #     )
 # mail = Mail(app)
 
+
+app.config['UPLOAD_FOLDER'] = params['upload_location']
 
 if (local_server):
     app.config['SQLALCHEMY_DATABASE_URI'] = params['local_uri']
@@ -76,6 +80,17 @@ def dashboard():
 
     else:
         return render_template('login.html', params=params)
+
+
+
+@app.route("/uploader", methods = ['GET','POST'])
+def uploader():
+    if ('user' in session and session['user'] ==  params['admin_user']):
+        if (request.method=='POST'):
+            f = request.files['file']
+            f.save(os.path.join(app.config['UPLOAD_FOLDER'], f.filename))
+
+            return "Uploaded successfully"
 
 
 

@@ -17,8 +17,32 @@
 
 </header>
 
-<div>
-    Welcome, you are logged in
+
+<!-- Main Content-->
+
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            <div>
+                Welcome, you are logged in.
+            </div>
+            <br> <br>
+
+            <h1>Upload A File</h1>
+
+            <form action="/uploader" method="post" enctype="multipart/form-data">
+
+                <input type="file" name="file">
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+
+            </form>
+
+        </div>
+    </div>
 </div>
+
+
+
 
 {% endblock %}
