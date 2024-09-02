@@ -7,6 +7,8 @@
         "gmail-user":"unkillable.achilles@gmail.com",
         "gmail-password":"#achilles1007",
         "about_text":"Hi, this is Ashim, the king.",
-        "no_of_post":5
+        "no_of_post":5,
+        "admin_user":"Ashim",
+        "admin_password":"iamashim"
     }
 }

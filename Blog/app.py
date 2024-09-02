@@ -57,9 +57,12 @@ def main():
     return render_template('index.html', params=params, posts=posts)
 
 
-@app.route("/dashboard")
+@app.route("/dashboard", methods=['GET','POST'])
 def dashboard():
-    return render_template('login.html', params=params)
+    if request.method=='POST':
+        pass
+    else:
+        return render_template('login.html', params=params)
 
 
 @app.route("/about")
