@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, session
 from flask_sqlalchemy import SQLAlchemy
 from flask_mail import Mail
 import json
@@ -51,23 +51,37 @@ class Posts(db.Model):
     date = db.Column(db.String(20), nullable=False)
 
 
+
 @app.route("/")
 def main():
     posts = Posts.query.filter_by().all()
     return render_template('index.html', params=params, posts=posts)
 
 
+
 @app.route("/dashboard", methods=['GET','POST'])
 def dashboard():
+
+    if ('user' in session and session['user'] ==  params['admin_user']):
+        return render_template('dashboard.html')
+
     if request.method=='POST':
-        pass
+        username = request.form.get('username')
+        password = request.form.get('password')
+
+        if (username==params['admin_user'] and password==params['admin_password']):
+            session['user'] = username
+            return render_template('dashboard.html')
+
     else:
         return render_template('login.html', params=params)
+
 
 
 @app.route("/about")
 def about():
     return render_template('about.html', params=params)
+
 
 
 @app.route("/contact", methods = ['GET','POST'])
@@ -90,6 +104,7 @@ def contact():
         #                     )
 
     return render_template('contact.html')
+
 
 
 @app.route("/post/<string:post_slug>", methods=['GET'])
