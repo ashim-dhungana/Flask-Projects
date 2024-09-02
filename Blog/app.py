@@ -9,6 +9,7 @@ local_server = True
 
 
 app = Flask(__name__)
+app.secret_key = 'super-secret-key'
 
 
 # MAIL
