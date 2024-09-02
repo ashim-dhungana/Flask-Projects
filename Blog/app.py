@@ -57,6 +57,11 @@ def main():
     return render_template('index.html', params=params, posts=posts)
 
 
+@app.route("/dashboard")
+def dashboard():
+    return render_template('login.html', params=params)
+
+
 @app.route("/about")
 def about():
     return render_template('about.html', params=params)
