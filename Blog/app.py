@@ -68,7 +68,8 @@ def main():
 def dashboard():
 
     if ('user' in session and session['user'] ==  params['admin_user']):
-        return render_template('dashboard.html')
+        posts = Posts.query.all()
+        return render_template('dashboard.html', params=params, posts=posts)
 
     if request.method=='POST':
         username = request.form.get('username')
@@ -76,7 +77,9 @@ def dashboard():
 
         if (username==params['admin_user'] and password==params['admin_password']):
             session['user'] = username
-            return render_template('dashboard.html')
+            posts = Posts.query.all()
+
+            return render_template('dashboard.html', params=params, posts=posts)
 
     else:
         return render_template('login.html', params=params)
@@ -84,7 +87,7 @@ def dashboard():
 
 
 @app.route("/logout")
-def dashboard():
+def logout():
     return render_template('login.html', params=params)
 
 

@@ -24,27 +24,57 @@
     <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-md-10 col-lg-8 col-xl-7">
             <div>
-                Welcome, you are logged in.
+                Welcome, {{params['admin_user']}}.
+                <br> <br>
+
+                <h1>Upload A File</h1>
+
+                <form action="/uploader" method="post" enctype="multipart/form-data">
+
+                    <input type="file" name="file">
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+
+                </form>
+
+                <br>
+
             </div>
-            <br> <br>
 
-            <h1>Upload A File</h1>
-
-            <form action="/uploader" method="post" enctype="multipart/form-data">
-
-                <input type="file" name="file">
-
-                <button type="submit" class="btn btn-primary">Submit</button>
-
-            </form>
-
-            <br>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Sno</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Option</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td colspan="2">Larry the Bird</td>
+                        <td>@twitter</td>
+                    </tr>
+                </tbody>
+            </table>
 
             <button type="submit" class="btn btn-primary">Log Out</button>
 
         </div>
     </div>
 </div>
-
 
 {% endblock %}
