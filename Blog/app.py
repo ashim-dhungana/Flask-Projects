@@ -83,6 +83,12 @@ def dashboard():
 
 
 
+@app.route("/logout")
+def dashboard():
+    return render_template('login.html', params=params)
+
+
+
 @app.route("/uploader", methods = ['GET','POST'])
 def uploader():
     if ('user' in session and session['user'] ==  params['admin_user']):

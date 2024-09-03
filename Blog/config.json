@@ -10,6 +10,6 @@
         "no_of_post":5,
         "admin_user":"ashim",
         "admin_password":"iamashim",
-        "upload_location":"/run/media/ashim/Programming/Flask/Flask Projects/Blog/"
+        "upload_location":"/run/media/ashim/Programming/Flask/Flask Projects/Blog/Files"
     }
 }
