@@ -87,12 +87,6 @@ def dashboard():
 
 
 
-@app.route("/logout")
-def logout():
-    return render_template('login.html', params=params)
-
-
-
 @app.route("/uploader", methods = ['GET','POST'])
 def uploader():
     if ('user' in session and session['user'] ==  params['admin_user']):
@@ -173,6 +167,14 @@ def post_route(post_slug):
 # @app.route("/post")
 # def post():
 #     return render_template('post.html')
+
+
+
+@app.route("/logout")
+def logout():
+    if ('user' in session and session['user'] ==  params['admin_user']):
+        session['user'] = ""
+        return render_template('login.html', params=params)
 
 
 app.run(debug=True)
