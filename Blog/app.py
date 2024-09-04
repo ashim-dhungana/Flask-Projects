@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, session
+from flask import Flask, render_template, request, session, redirect
 from flask_sqlalchemy import SQLAlchemy
 # from werkzeug import secure_filename
 from flask_mail import Mail
@@ -119,7 +119,19 @@ def edit(sno):
                 db.session.add(post)
                 db.session.commit()
                 
-        return render_template('edit.html', params=params, sno=sno)
+            else:
+                post = Posts.query.filter_by(sno=sno).first()
+                post.tile = title
+                post.slug = slug
+                post.content = content
+                post.img_file = img_file
+                post.date =  date
+                
+                db.session.commit()
+                return redirect('/edit/+sno')
+                
+        post = Posts.query.filter_by(sno=sno).first()                    
+        return render_template('edit.html', params=params, post=post)
 
 
 
