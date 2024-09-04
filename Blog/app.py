@@ -126,6 +126,17 @@ def edit(sno):
                 
         post = Posts.query.filter_by(sno=sno).first()                    
         return render_template('edit.html', params=params, post=post)
+    
+    
+    
+@app.route("/delete/<string:sno>", methods=['GET','POST'])
+def delete(sno):
+    if ('user' in session and session['user'] == params['admin_user']):
+        post = Posts.query.filter_by(sno=sno).first()
+        db.session.delete(post)
+        db.session.commit()
+        
+    return redirect('/dashboard')
 
 
 
